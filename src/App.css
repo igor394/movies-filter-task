@@ -172,30 +172,16 @@ img {
     border: 1px solid black;
 }
 
-.checkbox:checked:before {
-    content: '';
-    position: absolute;
-    left: -5px;
-    width: 9px;
-    height: 6px;
-    background: #000;
-    -webkit-transform: rotate(50deg);
-    transform: rotate(50deg);
-    margin-top: 6px;
-    margin-left: 4px;
-}
-
 .checkbox:checked:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 17px;
-    height: 3px;
-    background: #000;
-    -webkit-transform: rotate(-50deg);
-    transform: rotate(-50deg);
-    margin-top: 5px;
-    margin-left: 3px;
+    left: 5px;
+    top: 2px;
+    width: 6px;
+    height: 11px;
+    border: solid #000;
+    border-width: 0 2px 2px 0;
+    transform: rotate(
+            45deg
+    );
 }
 
 label {
@@ -203,7 +189,6 @@ label {
 }
 
 label span {
-    display: flex;
     padding-left: 28px;
 }
 
