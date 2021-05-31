@@ -60,15 +60,20 @@ input::placeholder {
 .search {
     width: 440px;
 }
+@media screen and (max-width: 900px){
+    .search {
+        width: 240px;
 
+    }
+}
 .selected {
-    width: 113px;
-    padding: 0 19px 0 16px;
+    width: 115px;
+    padding: 0 14px 0 19px;
     justify-content: space-between;
 }
 
 img {
-    width: 19px;
+    width: 18.5px;
 }
 
 .search-result {
@@ -78,7 +83,7 @@ img {
 }
 
 .rating {
-    width: 240px;
+    width: 242px;
     height: 302px;
     border: 1px solid #979797;
     margin: 4px 6px 0 6px;
@@ -138,6 +143,7 @@ img {
 
 .rating div {
     display: flex;
+    position: relative;
     align-items: center;
     font-family: DM Sans;
     font-style: normal;
@@ -146,10 +152,6 @@ img {
     line-height: 24px;
     letter-spacing: -0.2px;
     color: #000000;
-}
-
-.rating div {
-    position: relative;
 }
 
 .rating div input {
@@ -170,6 +172,7 @@ img {
     height: 14px;
     position: absolute;
     border: 1px solid black;
+    margin-top: 2px;
 }
 
 .checkbox:checked:after {
@@ -189,6 +192,6 @@ label {
 }
 
 label span {
-    padding-left: 28px;
+    padding-left: 25px;
 }
 

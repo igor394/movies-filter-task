@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import {useCallback, useEffect, useState} from "react";
 import "./App.css";
 import dataBase from "../src/data.json";
 
@@ -11,7 +11,7 @@ const getFilterArrOptions = (objParam) => {
 };
 
 const getFilterMap = (stateObj) => {
-    const res = { ...stateObj };
+    const res = {...stateObj};
     for (let el in res) {
         if (typeof res[el] === "object") {
             res[el] = getFilterArrOptions(res[el]);
@@ -34,7 +34,6 @@ function App() {
 
     useEffect(() => {
         const filters = getFilterMap(filterOptions);
-
         setDisplayedMovies(filterMovies(fetchedMovies, filters));
     }, [filterOptions]);
 
@@ -52,21 +51,20 @@ function App() {
         return arr.filter((eachObj) => {
             return filterKeys.every((eachKey) => {
                 if (!filters[eachKey].length || filters[eachKey].includes("any")) {
+
                     return true; // passing an empty filter means that filter is ignored.
                 }
-
                 if (eachKey === "rating") {
+
                     return filters[eachKey].includes(
                         String(Math.trunc(eachObj[eachKey]))
                     );
                 }
-
                 if (eachKey === "title") {
                     return eachObj[eachKey]
                         .toLowerCase()
                         .includes(filters[eachKey].toLowerCase());
                 }
-
                 return filters[eachKey].includes(eachObj[eachKey]);
             });
         });
@@ -90,11 +88,8 @@ function App() {
         }
     }, []);
 
-    const checkboxGenreHandler = () => {};
-    const checkboxRatingHandler = () => {};
-
     const onchangeTitleHandler = (e) => {
-        const { value } = e.target;
+        const {value} = e.target;
         setFilterOptions({
             ...filterOptions,
             title: value,
@@ -102,18 +97,18 @@ function App() {
     };
 
     const onchangeRatingHandler = (e) => {
-        const { name, checked } = e.target;
+        const {name, checked} = e.target;
         setFilterOptions({
             ...filterOptions,
-            rating: { ...filterOptions.rating, [name]: checked },
+            rating: {...filterOptions.rating, [name]: checked},
         });
     };
 
     const onchangeGenreHandler = (e) => {
-        const { name, checked } = e.target;
+        const {name, checked} = e.target;
         setFilterOptions({
             ...filterOptions,
-            category: { ...filterOptions.category, [name]: checked },
+            category: {...filterOptions.category, [name]: checked},
         });
     };
 
@@ -162,9 +157,9 @@ function App() {
                 <div className="selected" onClick={openRatingSectionHandler}>
                     <span>Rating</span>
                     {isRatingSectionOpen ? (
-                        <img src="/images/chevron-up.svg" alt="arrow" />
+                        <img src="/images/chevron-up.svg" alt="arrow"/>
                     ) : (
-                        <img src="/images/chevron-down.svg" alt="arrow" />
+                        <img src="/images/chevron-down.svg" alt="arrow"/>
                     )}
                 </div>
                 {isRatingSectionOpen && (
@@ -181,7 +176,7 @@ function App() {
                                 <span>Any rating</span>
                             </label>
                         </div>
-                        <div onClick={checkboxRatingHandler} id="1">
+                        <div id="1">
                             <label>
                                 <input
                                     className="checkbox"
@@ -191,11 +186,11 @@ function App() {
                                     checked={filterOptions.rating["1"] || false}
                                 />
                                 <span
-                                    dangerouslySetInnerHTML={{ __html: ratingOutput(1) }}
+                                    dangerouslySetInnerHTML={{__html: ratingOutput(1)}}
                                 ></span>
                             </label>
                         </div>
-                        <div onClick={checkboxRatingHandler} id="2">
+                        <div id="2">
                             <label>
                                 <input
                                     onChange={onchangeRatingHandler}
@@ -205,11 +200,11 @@ function App() {
                                     type="checkbox"
                                 />
                                 <span
-                                    dangerouslySetInnerHTML={{ __html: ratingOutput(2) }}
+                                    dangerouslySetInnerHTML={{__html: ratingOutput(2)}}
                                 ></span>
                             </label>
                         </div>
-                        <div onClick={checkboxRatingHandler} id="3">
+                        <div id="3">
                             <label>
                                 <input
                                     onChange={onchangeRatingHandler}
@@ -219,11 +214,11 @@ function App() {
                                     type="checkbox"
                                 />
                                 <span
-                                    dangerouslySetInnerHTML={{ __html: ratingOutput(3) }}
+                                    dangerouslySetInnerHTML={{__html: ratingOutput(3)}}
                                 ></span>
                             </label>
                         </div>
-                        <div onClick={checkboxRatingHandler} id="4">
+                        <div id="4">
                             <label>
                                 <input
                                     onChange={onchangeRatingHandler}
@@ -233,11 +228,11 @@ function App() {
                                     type="checkbox"
                                 />
                                 <span
-                                    dangerouslySetInnerHTML={{ __html: ratingOutput(4) }}
+                                    dangerouslySetInnerHTML={{__html: ratingOutput(4)}}
                                 ></span>
                             </label>
                         </div>
-                        <div onClick={checkboxRatingHandler} id="5">
+                        <div id="5">
                             <label>
                                 <input
                                     onChange={onchangeRatingHandler}
@@ -247,11 +242,11 @@ function App() {
                                     type="checkbox"
                                 />
                                 <span
-                                    dangerouslySetInnerHTML={{ __html: ratingOutput(5) }}
+                                    dangerouslySetInnerHTML={{__html: ratingOutput(5)}}
                                 ></span>
                             </label>
                         </div>
-                        <div onClick={checkboxRatingHandler} id="6">
+                        <div id="6">
                             <label>
                                 <input
                                     onChange={onchangeRatingHandler}
@@ -261,11 +256,11 @@ function App() {
                                     type="checkbox"
                                 />
                                 <span
-                                    dangerouslySetInnerHTML={{ __html: ratingOutput(6) }}
+                                    dangerouslySetInnerHTML={{__html: ratingOutput(6)}}
                                 ></span>
                             </label>
                         </div>
-                        <div onClick={checkboxRatingHandler} id="7">
+                        <div id="7">
                             <label>
                                 <input
                                     onChange={onchangeRatingHandler}
@@ -275,11 +270,11 @@ function App() {
                                     type="checkbox"
                                 />
                                 <span
-                                    dangerouslySetInnerHTML={{ __html: ratingOutput(7) }}
+                                    dangerouslySetInnerHTML={{__html: ratingOutput(7)}}
                                 ></span>
                             </label>
                         </div>
-                        <div onClick={checkboxRatingHandler} id="8">
+                        <div id="8">
                             <label>
                                 <input
                                     onChange={onchangeRatingHandler}
@@ -289,11 +284,11 @@ function App() {
                                     type="checkbox"
                                 />
                                 <span
-                                    dangerouslySetInnerHTML={{ __html: ratingOutput(8) }}
+                                    dangerouslySetInnerHTML={{__html: ratingOutput(8)}}
                                 ></span>
                             </label>
                         </div>
-                        <div onClick={checkboxRatingHandler} id="9">
+                        <div id="9">
                             <label>
                                 <input
                                     onChange={onchangeRatingHandler}
@@ -303,11 +298,11 @@ function App() {
                                     type="checkbox"
                                 />
                                 <span
-                                    dangerouslySetInnerHTML={{ __html: ratingOutput(9) }}
+                                    dangerouslySetInnerHTML={{__html: ratingOutput(9)}}
                                 ></span>
                             </label>
                         </div>
-                        <div onClick={checkboxRatingHandler} id="10">
+                        <div id="10">
                             <label>
                                 <input
                                     onChange={onchangeRatingHandler}
@@ -317,7 +312,7 @@ function App() {
                                     type="checkbox"
                                 />
                                 <span
-                                    dangerouslySetInnerHTML={{ __html: ratingOutput(10) }}
+                                    dangerouslySetInnerHTML={{__html: ratingOutput(10)}}
                                 ></span>
                             </label>
                         </div>
@@ -329,9 +324,9 @@ function App() {
                 <div className="selected" onClick={openGenreSectionHandler}>
                     <span>Genre</span>
                     {isGenreSectionOpen ? (
-                        <img src="/images/chevron-up.svg" alt="arrow" />
+                        <img src="/images/chevron-up.svg" alt="arrow"/>
                     ) : (
-                        <img src="/images/chevron-down.svg" alt="arrow" />
+                        <img src="/images/chevron-down.svg" alt="arrow"/>
                     )}
                 </div>
                 {isGenreSectionOpen && (
@@ -348,7 +343,7 @@ function App() {
                                 <span>Any genre</span>
                             </label>
                         </div>
-                        <div onClick={checkboxGenreHandler} id="Action">
+                        <div id="Action">
                             <label>
                                 <input
                                     onChange={onchangeGenreHandler}
@@ -360,7 +355,7 @@ function App() {
                                 <span>Action</span>
                             </label>
                         </div>
-                        <div onClick={checkboxGenreHandler} id="Comedy">
+                        <div id="Comedy">
                             <label>
                                 <input
                                     onChange={onchangeGenreHandler}
@@ -372,7 +367,7 @@ function App() {
                                 <span>Comedy</span>
                             </label>
                         </div>
-                        <div onClick={checkboxGenreHandler} id="Drama">
+                        <div id="Drama">
                             <label>
                                 <input
                                     onChange={onchangeGenreHandler}
@@ -384,7 +379,7 @@ function App() {
                                 <span>Drama</span>
                             </label>
                         </div>
-                        <div onClick={checkboxGenreHandler} id="Thriller">
+                        <div id="Thriller">
                             <label>
                                 <input
                                     onChange={onchangeGenreHandler}
